@@ -18,7 +18,7 @@ mod hos {
     }
 
     #[inline]
-    pub unsafe fn raw(m: &Mutex) -> *mut sys::Mutex {
+    pub unsafe fn raw(m: &Mutex) -> *mut libnx::Mutex {
         m.inner.get()
     }
 
@@ -56,7 +56,7 @@ mod hos {
         }
     }
 
-    pub struct ReentrantMutex { inner: UnsafeCell<sys::RMutex> }
+    pub struct ReentrantMutex { inner: UnsafeCell<libnx::RMutex> }
 
     unsafe impl Send for ReentrantMutex {}
     unsafe impl Sync for ReentrantMutex {}
@@ -64,7 +64,7 @@ mod hos {
     impl ReentrantMutex {
         pub unsafe fn uninitialized() -> ReentrantMutex {
             ReentrantMutex { 
-                inner: UnsafeCell::new(sys::RMutex {
+                inner: UnsafeCell::new(libnx::RMutex {
                     lock : 0,
                     thread_tag : 0,
                     counter : 0,
