@@ -15,7 +15,6 @@ pub use self::hos::*;
 mod hos {
     use mem;
     use cell::UnsafeCell;
-    use nx::sys;
 
     // TODO: properly implement this
     

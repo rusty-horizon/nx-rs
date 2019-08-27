@@ -5,7 +5,7 @@ version = "0.0.0"
 build = "build.rs"
 license = "MIT/Apache-2.0"
 repository = "https://github.com/rust-lang/rust.git"
-description = "The Rust Standard Library"
+description = "The Rust Standard Library (devkitPro + libnx version)"
 
 [lib]
 name = "std"
@@ -40,7 +40,7 @@ backtrace-sys = { version = "0.1.24", features = ["rustc-dep-of-std"], optional 
 #rustc_msan = { path = "../librustc_msan" }
 #rustc_tsan = { path = "../librustc_tsan" }
 
-nx = { git = "https://github.com/rusty-horizon/libnx", features = ["sysroot"]}
+nx-sys = { git = "https://github.com/rusty-horizon/nx-rs" }
 
 [target.x86_64-fortanix-unknown-sgx.dependencies]
 fortanix-sgx-abi = { version = "0.3.2", features = ['rustc-dep-of-std'] }

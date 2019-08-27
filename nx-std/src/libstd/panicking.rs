@@ -187,45 +187,12 @@ fn default_hook(info: &PanicInfo) {
     let name = thread.as_ref().and_then(|t| t.name()).unwrap_or("<unnamed>");
 
     #[cfg(all(target_os = "horizon-nx", target_arch = "aarch64"))]
-    use nx::sys;
     use process;
 
     #[cfg(all(target_os = "horizon-nx", target_arch = "aarch64"))]
     unsafe {
 
-        // Ensure console is closed
-        sys::consoleExit(ptr::null_mut());
-
-        // Ensure graphic services are closed (so that graphics won't be a problem at all)
-        sys::viExit();
-        sys::nvExit();
-
-        sys::consoleInit(ptr::null_mut());
-
-        println!();
-        println!("Rust panic");
-        println!();
-        println!("thread '{}' panicked at '{}', {}", name, msg, location);
-        println!();
-        println!("Press Plus/Minus to exit from the current process.");
-        sys::consoleUpdate(ptr::null_mut());
-
-        loop {
-            sys::hidScanInput();
-
-            let kdown = sys::hidKeysDown(sys::HidControllerID_CONTROLLER_P1_AUTO);
-
-            if (kdown & (sys::HidControllerKeys_KEY_PLUS as u64)) != 0 {
-                break;
-            }
-
-            if (kdown & (sys::HidControllerKeys_KEY_MINUS as u64)) != 0 {
-                break;
-            }
-        }
-
-        sys::consoleExit(ptr::null_mut());
-
+        // TODO: proper panic display (BSOD?)
         process::exit(0);
     }
 

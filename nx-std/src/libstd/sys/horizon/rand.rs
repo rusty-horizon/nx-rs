@@ -23,7 +23,6 @@ pub fn hashmap_random_keys() -> (u64, u64) {
 
 #[cfg(all(target_arch = "aarch64", target_os = "horizon-nx"))]
 mod imp {
-    use nx;
 
     pub fn fill_bytes(v: &mut [u8]) {
         unsafe {
@@ -36,7 +35,7 @@ mod imp {
             //
             // Perhaps overriding __appInit() and __appExit() will work,
             // but that's an experiment for another time.
-            nx::sys::randomGet(v.as_ptr() as _, v.len());
+            libnx::randomGet(v.as_ptr() as _, v.len());
         }
     }
 }

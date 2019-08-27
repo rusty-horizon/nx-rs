@@ -19,7 +19,7 @@ mod hos {
     use sys_common::thread::start_thread;
     use time::Duration;
     use cell::UnsafeCell;
-    use nx::sys::Thread as HosThread;
+    use libnx::Thread as HosThread;
     use libc;
 
     #[repr(C)]

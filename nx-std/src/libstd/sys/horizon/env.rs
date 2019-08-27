@@ -11,12 +11,12 @@
 #[cfg(target_os = "horizon-nx")]
 pub mod os {
     pub const FAMILY: &'static str = "nintendo";
-    pub const OS: &'static str = "horizon";
+    pub const OS: &'static str = "horizon-nx";
     pub const DLL_PREFIX: &'static str = "";
-    pub const DLL_SUFFIX: &'static str = ".cro";
-    pub const DLL_EXTENSION: &'static str = ".cro";
-    pub const EXE_SUFFIX: &'static str = ".3dsx";
-    pub const EXE_EXTENSION: &'static str = "3dsx";
+    pub const DLL_SUFFIX: &'static str = ".nro";
+    pub const DLL_EXTENSION: &'static str = "nro";
+    pub const EXE_SUFFIX: &'static str = ".nso";
+    pub const EXE_EXTENSION: &'static str = "nso";
 }
 
 #[cfg(target_os = "linux")]

@@ -354,7 +354,7 @@ extern crate libc;
 extern crate rustc_demangle;
 
 #[cfg(all(target_os = "horizon-nx", target_arch = "aarch64"))]
-extern crate nx;
+extern crate nx_sys as libnx;
 
 // We always need an unwinder currently for backtraces
 //#[doc(masked)]
