@@ -1,0 +1,48 @@
+error: multiple unused formatting arguments
+  --> $DIR/format-unused-lables.rs:12:22
+   |
+LL |     println!("Test", 123, 456, 789);
+   |              ------  ^^^  ^^^  ^^^
+   |              |
+   |              multiple missing formatting specifiers
+
+error: multiple unused formatting arguments
+  --> $DIR/format-unused-lables.rs:16:9
+   |
+LL |     println!("Test2",
+   |              ------- multiple missing formatting specifiers
+LL |         123,  //~ ERROR multiple unused formatting arguments
+   |         ^^^
+LL |         456,
+   |         ^^^
+LL |         789
+   |         ^^^
+
+error: named argument never used
+  --> $DIR/format-unused-lables.rs:21:35
+   |
+LL |     println!("Some stuff", UNUSED="args"); //~ ERROR named argument never used
+   |              ------------         ^^^^^^
+   |              |
+   |              formatting specifier missing
+
+error: multiple unused formatting arguments
+  --> $DIR/format-unused-lables.rs:24:9
+   |
+LL |     println!("Some more $STUFF",
+   |              ------------------
+   |              |          |
+   |              |          help: format specifiers use curly braces: `{STUFF}`
+   |              multiple missing formatting specifiers
+LL |         "woo!",  //~ ERROR multiple unused formatting arguments
+   |         ^^^^^^
+LL |             STUFF=
+LL |        "things"
+   |        ^^^^^^^^
+LL |              , UNUSED="args");
+   |                       ^^^^^^
+   |
+   = note: shell formatting not supported; see the documentation for `std::fmt`
+
+error: aborting due to 4 previous errors
+

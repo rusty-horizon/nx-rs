@@ -1,0 +1,12 @@
+error: rustc_outlives
+  --> $DIR/explicit-struct.rs:14:1
+   |
+LL | / struct Foo<'b, U> { //~ ERROR 14:1: 16:2: rustc_outlives
+LL | |     bar: Bar<'b, U>
+LL | | }
+   | |_^
+   |
+   = note: U : 'b
+
+error: aborting due to previous error
+

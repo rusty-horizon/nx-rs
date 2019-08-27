@@ -1,0 +1,19 @@
+error[E0716]: temporary value dropped while borrowed
+  --> $DIR/issue-27592.rs:26:27
+   |
+LL |     write(|| format_args!("{}", String::from("Hello world")));
+   |                           ^^^^                             - temporary value is freed at the end of this statement
+   |                           |
+   |                           creates a temporary which is freed while still in use
+
+error[E0716]: temporary value dropped while borrowed
+  --> $DIR/issue-27592.rs:26:33
+   |
+LL |     write(|| format_args!("{}", String::from("Hello world")));
+   |                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^- temporary value is freed at the end of this statement
+   |                                 |
+   |                                 creates a temporary which is freed while still in use
+
+error: aborting due to 2 previous errors
+
+For more information about this error, try `rustc --explain E0716`.

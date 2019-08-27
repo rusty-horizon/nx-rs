@@ -1,0 +1,8 @@
+[workspace]
+members = [
+    "src/libstd",
+    "src/liballoc",
+    "src/liballoc_system",
+    "src/libpanic_abort",
+    "src/libpanic_unwind"
+]

@@ -1,0 +1,66 @@
+error[E0659]: `panic` is ambiguous
+  --> $DIR/shadow_builtin_macros.rs:43:5
+   |
+LL |     panic!(); //~ ERROR `panic` is ambiguous
+   |     ^^^^^ ambiguous name
+   |
+note: `panic` could refer to the name defined here
+  --> $DIR/shadow_builtin_macros.rs:40:9
+   |
+LL |         macro_rules! panic { () => {} }
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+LL |     } }
+LL |     m!();
+   |     ----- in this macro invocation
+   = note: `panic` is also a builtin macro
+   = note: macro-expanded macros do not shadow
+
+error[E0659]: `panic` is ambiguous
+  --> $DIR/shadow_builtin_macros.rs:25:14
+   |
+LL |     fn f() { panic!(); } //~ ERROR ambiguous
+   |              ^^^^^ ambiguous name
+   |
+note: `panic` could refer to the name imported here
+  --> $DIR/shadow_builtin_macros.rs:24:9
+   |
+LL |     use foo::*;
+   |         ^^^^^^
+   = note: `panic` is also a builtin macro
+   = note: consider adding an explicit import of `panic` to disambiguate
+
+error[E0659]: `panic` is ambiguous
+  --> $DIR/shadow_builtin_macros.rs:30:14
+   |
+LL |     fn f() { panic!(); } //~ ERROR ambiguous
+   |              ^^^^^ ambiguous name
+   |
+note: `panic` could refer to the name imported here
+  --> $DIR/shadow_builtin_macros.rs:29:26
+   |
+LL |     ::two_macros::m!(use foo::panic;);
+   |                          ^^^^^^^^^^
+   = note: `panic` is also a builtin macro
+   = note: macro-expanded macro imports do not shadow
+
+error[E0659]: `n` is ambiguous
+  --> $DIR/shadow_builtin_macros.rs:59:5
+   |
+LL |     n!(); //~ ERROR ambiguous
+   |     ^ ambiguous name
+   |
+note: `n` could refer to the name imported here
+  --> $DIR/shadow_builtin_macros.rs:58:9
+   |
+LL |     use bar::*;
+   |         ^^^^^^
+note: `n` could also refer to the name imported here
+  --> $DIR/shadow_builtin_macros.rs:46:13
+   |
+LL | #[macro_use(n)]
+   |             ^
+   = note: consider adding an explicit import of `n` to disambiguate
+
+error: aborting due to 4 previous errors
+
+For more information about this error, try `rustc --explain E0659`.
