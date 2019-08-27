@@ -1,0 +1,18 @@
+[package]
+name = "nx-sys"
+version = "0.1.0"
+authors = ["XorTroll", "ischeinkman <scheinkman.ilan@gmail.com>", "Switchbrew"]
+
+[lib]
+crate_type = ["rlib"]
+
+[dependencies]
+cfg-if = "0.1"
+
+[build-dependencies]
+bindgen ="0.37.4"
+cfg-if = "0.1"
+
+[features]
+default = []
+twili = []

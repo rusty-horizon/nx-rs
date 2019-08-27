@@ -1,0 +1,15 @@
+[package]
+name = "nx-rs"
+version = "0.1.0"
+authors = ["XorTroll", "ischeinkman <scheinkman.ilan@gmail.com>", "Switchbrew"]
+
+[lib]
+crate_type = ["rlib"]
+name = "nx"
+
+[dependencies.nx-sys]
+path = "../nx-sys"
+
+[features]
+default = []
+twili = []
